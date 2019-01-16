@@ -35,16 +35,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">PM10</h5>
-            <h1 class="display-2 text-center">123</h1>
-            <div class="text-center">mg/m^3</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">PM10</h5>
-            <h1 class="display-2 text-center">123</h1>
+            <h1 class="display-2 text-center">{{ data["PM10"] }}</h1>
             <div class="text-center">mg/m^3</div>
           </div>
         </div>
@@ -53,7 +44,16 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">PM2.5</h5>
-            <h1 class="display-2 text-center">123</h1>
+            <h1 class="display-2 text-center">{{ data["PM2.5"] }}</h1>
+            <div class="text-center">mg/m^3</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">PM1.0</h5>
+            <h1 class="display-2 text-center">{{ data["PM1"] }}</h1>
             <div class="text-center">mg/m^3</div>
           </div>
         </div>

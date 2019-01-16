@@ -24,4 +24,17 @@ def generate_conn():
 
 @web.route("/")
 def render_index():
-    return render_template("index.html")
+    sql = '''
+    SELECT *
+    FROM logs
+    ORDER BY timestamp DESC
+    '''
+    cursor.execute(sql)
+    latest_data = cursor.fetchone()
+    data = {
+        "timestamp": latest_data[0],
+        "PM10": latest_data[1],
+        "PM2.5": latest_data[2],
+        "PM1": latest_data[3]
+    }
+    return render_template("index.html", data=data)

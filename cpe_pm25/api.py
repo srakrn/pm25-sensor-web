@@ -60,7 +60,7 @@ def return_amounted_dust():
         latest_data = cursor.fetchone()
         if latest_data == None:
             break
-        res.apiend({
+        res.append({
             "timestamp": latest_data[0],
             "PM10": latest_data[1],
             "PM2.5": latest_data[2],
