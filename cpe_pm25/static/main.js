@@ -18,7 +18,7 @@ function updateChart() {
     for (var i = 0; i < data.length; i++) {
       dataPoints.unshift(data[i]["PM2.5"]);
       timestamp = moment(data[i]["timestamp"]);
-      labels.unshift(timestamp.format("HH:mm"));
+      labels.unshift(timestamp.format("DD/MM/YYYY HH:mm"));
     }
     console.log(dataPoints);
     console.log(labels);
@@ -28,7 +28,7 @@ function updateChart() {
         labels: labels,
         datasets: [
           {
-            label: "# of Votes",
+            label: "PM2.5",
             data: dataPoints,
             backgroundColor: ["rgba(255, 99, 132, 0.2)"],
             borderColor: ["rgba(255,99,132,1)"],
