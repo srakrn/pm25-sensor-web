@@ -39,7 +39,7 @@ def return_latest_dust():
     })
 
 
-@api.route("/query")
+@api.route("/history")
 def return_amounted_dust():
     try:
         amount = int(request.args.get('amount'))
