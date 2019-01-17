@@ -10,9 +10,55 @@ function updateValues() {
   });
 }
 
+function updateChart() {
+  var ctx = $("#pm25-chart");
+  $.getJSON("/api/history", function(data) {
+    var dataPoints = [];
+    var labels = [];
+    for (var i = 0; i < data.length; i++) {
+      dataPoints.unshift(data[i]["PM2.5"]);
+      timestamp = moment(data[i]["timestamp"]);
+      labels.unshift(timestamp.format("HH:mm"));
+    }
+    console.log(dataPoints);
+    console.log(labels);
+    var myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "# of Votes",
+            data: dataPoints,
+            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+            borderColor: ["rgba(255,99,132,1)"],
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      }
+    });
+  });
+}
+
 $(".carousel").carousel({
   interval: 3000
 });
 
-updateValues();
-setInterval(updateValues, 5 * 60 * 1000);
+function update() {
+  updateValues();
+  updateChart();
+}
+
+update();
+setInterval(update, 5 * 60 * 1000);
