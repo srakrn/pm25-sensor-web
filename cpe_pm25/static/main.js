@@ -5,7 +5,8 @@ function updateValues() {
     $("#pm10").html(data["PM10"]);
     $("#pm1").html(data["PM1"]);
     $("#pm1").html(data["PM1"]);
-    $("#timestamp").html(data["timestamp"]);
+    var timestamp = moment(data["timestamp"]);
+    $("#timestamp").html(timestamp.format("DD/MM/YYYY HH:mm"));
   });
 }
 
