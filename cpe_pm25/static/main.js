@@ -12,4 +12,6 @@ function updateValues() {
 $(".carousel").carousel({
   interval: 3000
 });
-setInterval(updateValues, 15 * 60 * 1000);
+
+updateValues();
+setInterval(updateValues, 5 * 60 * 1000);
