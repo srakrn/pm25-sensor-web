@@ -5,8 +5,7 @@ from os import getenv
 from dotenv import load_dotenv
 load_dotenv()
 
-web = Blueprint('web', __name__,
-                template_folder='templates')
+web = Blueprint('web', __name__, template_folder='templates')
 
 
 @web.before_request
