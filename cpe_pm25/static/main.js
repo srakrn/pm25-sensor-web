@@ -16,7 +16,7 @@ gradientStroke.addColorStop(0, "rgba(255, 160, 0, 0.8)");
 gradientStroke.addColorStop(1, "rgba(255, 160, 0, 0)");
 
 function updateChart() {
-  $.getJSON("/api/history", function(data) {
+  $.getJSON("/api/history?amount=100", function(data) {
     var dataPoints = [];
     var labels = [];
     for (var i = 0; i < data.length; i++) {
