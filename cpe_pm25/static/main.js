@@ -10,8 +10,12 @@ function updateValues() {
   });
 }
 
+var ctx = document.getElementById("pm25-chart").getContext("2d");
+var gradientStroke = ctx.createLinearGradient(0, 0, 0, 200);
+gradientStroke.addColorStop(0, "rgba(255, 160, 0, 0.8)");
+gradientStroke.addColorStop(1, "rgba(255, 160, 0, 0)");
+
 function updateChart() {
-  var ctx = $("#pm25-chart");
   $.getJSON("/api/history", function(data) {
     var dataPoints = [];
     var labels = [];
@@ -30,9 +34,9 @@ function updateChart() {
           {
             label: "PM2.5",
             data: dataPoints,
-            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-            borderColor: ["rgba(255,99,132,1)"],
-            borderWidth: 1
+            backgroundColor: gradientStroke,
+            borderColor: "#FF6F00",
+            borderWidth: 3
           }
         ]
       },
