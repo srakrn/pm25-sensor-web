@@ -35,8 +35,6 @@ class DustDatabase:
             latest_data = self.cursor.fetchone()
             if latest_data == None:
                 break
-            print(latest_data[0].isoformat())
-            print(type(latest_data[0]))
             res.append({
                 "timestamp": latest_data[0],
                 "PM10": latest_data[1],
