@@ -34,33 +34,39 @@
     <style type="text/css">
     </style>
   </head>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(255, 160, 0, 1.0);">
+    <a class="navbar-brand" href="#">PM2.5@CPE</a>
+  </nav>
   <div class="container">
     <div class="jumbotron mt-3">
-      <h1 class="display-4">PM2.5 at Kasetsart University</h1>
-      <p>
-        เซนเซอร์วัดดังกล่าวเป็นเซนเซอร์ที่ติดตั้งบริเวณอาคารของ
-        <a href="https://cpe.ku.ac.th/"
-          >ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์
-          มหาวิทยาลัยเกษตรศาสตร์</a
-        >
-      </p>
-      <p class="small">
-        ภาควิชาฯ เปิดสอนรายวิชาการสร้างอุปกรณ์ "อินเทอร์เน็ตแห่งสรรพสิ่ง (IoT)"
-        ในลักษณะเดียวกับเซนเซอร์วัดคุณภาพอากาศตัวนี้ที่เชื่อมต่อกับอินเทอร์เน็ต
-        โดยเปิดสอนผ่านโครงการหลักสูตร<b
-          >ศาสตร์แห่งแผ่นดินเพื่อการพัฒนาที่ยั่งยืน</b
-        >
-        <a
-          href="https://cpe.ku.ac.th/kotl/"
-        >
-          ศึกษาเพิ่มเติมได้ที่นี่</a
-        >
-      </p>
+      <h1 class="display-4">PM2.5@CPE</h1>
+      <span class="d-none d-md-block ">
+        <p>
+          เซนเซอร์วัดตัวนี้เป็นผลงานของ
+          <a href="https://cpe.ku.ac.th/"
+            >ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์
+            มหาวิทยาลัยเกษตรศาสตร์</a
+          >
+          และติดตั้งอยู่บริเวณชั้น 1 อาคารภาควิชาฯ
+        </p>
+        <p class="small">
+          ภาควิชาฯ เปิดสอนรายวิชาการสร้างอุปกรณ์ "อินเทอร์เน็ตแห่งสรรพสิ่ง (IoT)"
+          ในลักษณะเดียวกับเซนเซอร์วัดคุณภาพอากาศตัวนี้ที่เชื่อมต่อกับอินเทอร์เน็ต
+          โดยเปิดสอนผ่านโครงการหลักสูตร<b
+            >ศาสตร์แห่งแผ่นดินเพื่อการพัฒนาที่ยั่งยืน</b
+          >
+          <a
+            href="https://cpe.ku.ac.th/kotl/"
+          >
+            ศึกษาเพิ่มเติมได้ที่นี่</a
+          >
+        </p>
+      </span>
     </div>
     <div class="row">
       <div class="col-md-4">
         <div
-          id="carouselExampleIndicators"
+          id="carouselIndicator"
           class="carousel slide"
           data-ride="carousel"
         >
@@ -95,7 +101,7 @@
           </div>
           <a
             class="carousel-control-prev"
-            href="#carouselExampleIndicators"
+            href="#carouselIndicator"
             role="button"
             data-slide="prev"
           >
@@ -104,7 +110,7 @@
           </a>
           <a
             class="carousel-control-next"
-            href="#carouselExampleIndicators"
+            href="#carouselIndicator"
             role="button"
             data-slide="next"
           >
