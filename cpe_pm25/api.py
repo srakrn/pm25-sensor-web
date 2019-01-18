@@ -22,8 +22,8 @@ class DustDatabase:
 
     def query(self, n=100):
         if n > 200:
-        sql = '''
             n = 200
+        sql = '''
         SELECT *
         FROM logs
         ORDER BY timestamp DESC
