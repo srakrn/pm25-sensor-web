@@ -1,5 +1,5 @@
 function updateValues() {
-  $.getJSON("/api/latest", function(data) {
+  $.getJSON("api/latest", function(data) {
     console.log(data);
     $("#pm25").html(data["PM2.5"]);
     $("#pm10").html(data["PM10"]);
@@ -16,7 +16,7 @@ gradientStroke.addColorStop(0, "rgba(255, 160, 0, 0.8)");
 gradientStroke.addColorStop(1, "rgba(255, 160, 0, 0)");
 
 function updateChart() {
-  $.getJSON("/api/history?amount=100", function(data) {
+  $.getJSON("api/history?amount=100", function(data) {
     var dataPoints = [];
     var labels = [];
     for (var i = 0; i < data.length; i++) {
