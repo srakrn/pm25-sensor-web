@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, abort, jsonify, request
 from jinja2 import TemplateNotFound
 from os import getenv
 from dotenv import load_dotenv
+from time import strftime
 load_dotenv()
 
 api = Blueprint('api', __name__,
@@ -19,8 +20,10 @@ class DustDatabase:
         )
         self.cursor = self.conn.cursor()
 
-    def query(self, n=200):
+    def query(self, n=100):
+        if n > 200:
         sql = '''
+            n = 200
         SELECT *
         FROM logs
         ORDER BY timestamp DESC
@@ -31,6 +34,8 @@ class DustDatabase:
             latest_data = self.cursor.fetchone()
             if latest_data == None:
                 break
+            print(latest_data[0].isoformat())
+            print(type(latest_data[0]))
             res.append({
                 "timestamp": latest_data[0],
                 "PM10": latest_data[1],
