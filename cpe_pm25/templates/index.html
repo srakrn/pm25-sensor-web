@@ -30,15 +30,19 @@
       crossorigin="anonymous"
     ></script>
     <script src="{{ url_for('static', filename='moment.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"
-    <style type="text/css">
-    </style>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
   </head>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(255, 160, 0, 1.0);">
+  <nav
+    class="navbar fixed-top navbar-expand-lg navbar-light"
+    style="background-color: rgba(255, 160, 0, 1.0);"
+  >
     <a class="navbar-brand" href="#">PM2.5@CPE</a>
   </nav>
   <div class="container">
-    <div class="jumbotron mt-3 d-none d-md-block">
+    <div class="jumbotron d-none d-md-block">
       <h1 class="display-4">PM2.5@CPE</h1>
       <p>
         เซนเซอร์วัดตัวนี้เป็นผลงานของ
@@ -54,26 +58,20 @@
         โดยเปิดสอนผ่านโครงการหลักสูตร<b
           >ศาสตร์แห่งแผ่นดินเพื่อการพัฒนาที่ยั่งยืน</b
         >
-        <a
-          href="https://cpe.ku.ac.th/kotl/"
-        >
-          ศึกษาเพิ่มเติมได้ที่นี่</a
-        >
+        <a href="https://cpe.ku.ac.th/kotl/"> ศึกษาเพิ่มเติมได้ที่นี่</a>
       </p>
     </div>
     <div class="row">
       <div class="col-md-4">
-        <div
-          id="carouselIndicator"
-          class="carousel slide"
-          data-ride="carousel"
-        >
+        <div id="carouselIndicator" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">PM2.5</h5>
-                  <h1 class="display-2 text-center" id="pm25">{{ data["PM2.5"] }}</h1>
+                  <h1 class="display-2 text-center" id="pm25">
+                    {{ data["PM2.5"] }}
+                  </h1>
                   <div class="text-center">μg/m<sup>3</sup></div>
                 </div>
               </div>
@@ -82,7 +80,9 @@
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">PM10</h5>
-                  <h1 class="display-2 text-center" id="pm10">{{ data["PM10"] }}</h1>
+                  <h1 class="display-2 text-center" id="pm10">
+                    {{ data["PM10"] }}
+                  </h1>
                   <div class="text-center">μg/m<sup>3</sup></div>
                 </div>
               </div>
@@ -91,7 +91,9 @@
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">PM1</h5>
-                  <h1 class="display-2 text-center" id="pm1">{{ data["PM1"] }}</h1>
+                  <h1 class="display-2 text-center" id="pm1">
+                    {{ data["PM1"] }}
+                  </h1>
                   <div class="text-center">μg/m<sup>3</sup></div>
                 </div>
               </div>
@@ -127,7 +129,7 @@
         <hr />
         <div class="footer">
           เซนเซอร์วัดฝุ่นครั้งล่าสุดเมื่อ
-          <span id="timestamp">{{ data["timestamp"]|datetime }}</span>
+          <span id="timestamp">{{ data["timestamp"] | datetime }}</span>
         </div>
       </div>
     </div>
