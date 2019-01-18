@@ -3,7 +3,8 @@ from flask import Blueprint, render_template, abort, jsonify, request
 from jinja2 import TemplateNotFound
 from os import getenv
 from dotenv import load_dotenv
-from time import strftime
+from datetime import timedelta
+
 load_dotenv()
 
 api = Blueprint('api', __name__,
@@ -24,7 +25,7 @@ class DustDatabase:
         if n > 200:
             n = 200
         sql = '''
-        SELECT *
+        SELECT convert_tz(`timestamp`,@@session.time_zone,'+00:00'), `pm10`, `pm2.5`, `pm1`
         FROM logs
         ORDER BY timestamp DESC
         '''
