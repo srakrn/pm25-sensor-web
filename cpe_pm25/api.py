@@ -22,6 +22,7 @@ class DustDatabase:
 
     def query(self, n=100):
         if n > 200:
+            n = 200
         sql = '''
             n = 200
         SELECT *
