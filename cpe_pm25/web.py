@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, abort, jsonify, request
 from jinja2 import TemplateNotFound
 from os import getenv
 from dotenv import load_dotenv
+from cpe_pm25.air_condition import get_air_condition
 load_dotenv()
 
 web = Blueprint('web', __name__, template_folder='templates')
@@ -34,7 +35,8 @@ def index():
         "timestamp": latest_data[0],
         "PM10": latest_data[1],
         "PM2.5": latest_data[2],
-        "PM1": latest_data[3]
+        "PM1": latest_data[3],
+        "description": get_air_condition(latest_data[2])
     }
     return render_template("index.html", data=data)
 
