@@ -50,6 +50,46 @@ function updateChart() {
               }
             }
           ]
+        },
+        annotation: {
+          annotations: [
+            {
+              drawTime: "afterDatasetsDraw",
+              id: "startingHealthAffection",
+              type: "line",
+              mode: "horizontal",
+              scaleID: "y-axis-0",
+              value: 50,
+              borderColor: "black",
+              borderWidth: 2,
+              borderDash: [2, 2],
+              label: {
+                enabled: true,
+                backgroundColor: "#FF6F00",
+                content: "เริ่มมีผลกระทบต่อสุขภาพ",
+                position: "left",
+                xAdjust: 10
+              }
+            },
+            {
+              drawTime: "afterDatasetsDraw",
+              id: "healthAffection",
+              type: "line",
+              mode: "horizontal",
+              scaleID: "y-axis-0",
+              value: 90,
+              borderColor: "black",
+              borderWidth: 2,
+              borderDash: [2, 2],
+              label: {
+                enabled: true,
+                backgroundColor: "#D84315",
+                content: "มีผลกระทบต่อสุขภาพ",
+                position: "left",
+                xAdjust: 10
+              }
+            }
+          ]
         }
       }
     });
