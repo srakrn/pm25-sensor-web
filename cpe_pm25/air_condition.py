@@ -2,10 +2,10 @@ def get_air_condition(pm25):
     lower_bound = [0, 26, 38, 51, 91]
     shortcode = [
         "good",
-        "okay",
+        "normal",
         "medium",
         "affecting",
-        "dangerous"
+        "polluted"
     ]
     brief_description = [
         "ดี",
