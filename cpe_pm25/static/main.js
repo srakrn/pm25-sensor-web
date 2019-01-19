@@ -35,7 +35,10 @@ function updateChart() {
             data: dataPoints,
             backgroundColor: gradientStroke,
             borderColor: "#FF6F00",
-            borderWidth: 3
+            borderWidth: 3,
+            cubicInterpolationMode: "default",
+            pointRadius: 2,
+            pointBackgroundColor: "#FF6F00"
           }
         ]
       },
