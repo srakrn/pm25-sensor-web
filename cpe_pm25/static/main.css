@@ -15,11 +15,12 @@ body {
 }
 
 .badge-affecting-air {
-    background: #FF9800;
+    background: #FF6F00;
+    color: #FFF;
 }
 
 .badge-polluted-air {
-    background: #F4511E;
+    background: #D84315;
     color: #FFF;
 }
 
