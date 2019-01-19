@@ -50,7 +50,7 @@ class DustDatabase:
         return True
 
 
-@api.route("/latest")
+@api.route("/")
 def api_manual():
     return render_template("api.html")
 
