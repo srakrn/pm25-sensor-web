@@ -1,7 +1,7 @@
 function updateValues() {
   $.getJSON("api/latest", function(data) {
     console.log(data);
-    $("#pm25-valie").html(data["PM2.5"]);
+    $("#pm25-value").html(data["PM2.5"]);
     $("#pm10-value").html(data["PM10"]);
     $("#pm1-value").html(data["PM1"]);
     var timestamp = moment(data["timestamp"]);
