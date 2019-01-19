@@ -21,7 +21,9 @@ endblock %} {% block contents %}
     <h3>
       สถานการณ์ปัจจุบัน:
       <span id="aqi-badge">
-        <div class="badge">{{ data["description"]["brief_description"] }}</div>
+        <div class="badge badge-{{ data['description']['shortcode'] }}-air">
+          {{ data["description"]["brief_description"] }}
+        </div>
       </span>
     </h3>
     <p id="aqi-description">{{ data["description"]["description"] }}</p>

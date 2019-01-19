@@ -1,9 +1,26 @@
-.carousel-control-prev-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3e%3c/svg%3e");
+body {
+    padding-top: 80px;
 }
 
-.carousel-control-next-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3e%3c/svg%3e");
+.badge-good-air {
+    background: #81D4FA;
+}
+
+.badge-normal-air {
+    background: #A5D6A7;
+}
+
+.badge-medium-air {
+    background: #FFCA28;
+}
+
+.badge-affecting-air {
+    background: #FF9800;
+}
+
+.badge-polluted-air {
+    background: #F4511E;
+    color: #FFF;
 }
 
 #dust-card .card-body {
@@ -12,8 +29,4 @@
 
 #pm25-chart-wrapper {
     height: 300px;
-}
-
-body {
-    padding-top: 80px;
 }
