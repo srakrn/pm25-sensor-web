@@ -22,7 +22,7 @@ def generate_conn():
 
 
 @web.route("/")
-def render_index():
+def index():
     sql = '''
     SELECT *
     FROM logs
@@ -37,3 +37,8 @@ def render_index():
         "PM1": latest_data[3]
     }
     return render_template("index.html", data=data)
+
+
+@web.route("/about")
+def sensor_info():
+    return render_template("about.html")
