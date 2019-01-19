@@ -1,161 +1,115 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-
-    <title>PM2.5 at Department of Computer Engineering</title>
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"
-      integrity="sha256-MZo5XY1Ah7Z2Aui4/alkfeiq3CopMdV/bbkc/Sh41+s="
-      crossorigin="anonymous"
-    ></script>
-    <script src="{{ url_for('static', filename='moment.js') }}"></script>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='main.css') }}"
-    />
-  </head>
-  <nav
-    class="navbar fixed-top navbar-expand-lg navbar-light"
-    style="background-color: rgba(255, 160, 0, 1.0);"
-  >
-    <a class="navbar-brand" href="#">PM2.5@CPE</a>
-  </nav>
-  <div class="container">
-    <div class="jumbotron d-none d-md-block">
-      <h1 class="display-4">PM2.5@CPE</h1>
-      <p>
-        เซนเซอร์วัดตัวนี้เป็นผลงานของ
-        <a href="https://cpe.ku.ac.th/"
-          >ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์
-          มหาวิทยาลัยเกษตรศาสตร์</a
-        >
-        และติดตั้งอยู่บริเวณชั้น 1 อาคารภาควิชาฯ
-      </p>
-      <p class="small">
-        ภาควิชาฯ เปิดสอนรายวิชาการสร้างอุปกรณ์ "อินเทอร์เน็ตแห่งสรรพสิ่ง (IoT)"
-        ในลักษณะเดียวกับเซนเซอร์วัดคุณภาพอากาศตัวนี้ที่เชื่อมต่อกับอินเทอร์เน็ต
-        โดยเปิดสอนผ่านโครงการหลักสูตร<b
-          >ศาสตร์แห่งแผ่นดินเพื่อการพัฒนาที่ยั่งยืน</b
-        >
-        <a href="https://cpe.ku.ac.th/kotl/"> ศึกษาเพิ่มเติมได้ที่นี่</a>
-      </p>
-    </div>
-    <div class="row">
-      <div class="col-md-4 mb-3">
-        <div class="card" id="dust-card">
-          <div class="card-body">
-            <ul class="nav nav-pills nav-fill" id="value-tabs" role="tablist">
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  id="pm25-tab"
-                  data-toggle="tab"
-                  href="#pm25"
-                  role="tab"
-                  aria-controls="pm25"
-                  aria-selected="true"
-                  >PM2.5</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  id="pm10-tab"
-                  data-toggle="tab"
-                  href="#pm10"
-                  role="tab"
-                  aria-controls="pm10"
-                  aria-selected="false"
-                  >PM10</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  id="pm1-tab"
-                  data-toggle="tab"
-                  href="#pm1"
-                  role="tab"
-                  aria-controls="pm1"
-                  aria-selected="false"
-                  >PM1</a
-                >
-              </li>
-            </ul>
-            <div class="tab-content" id="values-tab-content">
-              <div
-                class="tab-pane fade show active"
-                id="pm25"
-                role="tabpanel"
-                aria-labelledby="pm25-tab"
-              >
-                <h1 class="display-2 text-center" id="pm25-value">
-                  {{ data["PM2.5"] }}
-                </h1>
-                <div class="text-center">μg/m<sup>3</sup></div>
-              </div>
-              <div
-                class="tab-pane fade"
-                id="pm10"
-                role="tabpanel"
-                aria-labelledby="pm10-tab"
-              >
-                <h1 class="display-2 text-center" id="pm10-value">
-                  {{ data["PM10"] }}
-                </h1>
-                <div class="text-center">μg/m<sup>3</sup></div>
-              </div>
-              <div
-                class="tab-pane fade"
-                id="pm1"
-                role="tabpanel"
-                aria-labelledby="pm1-tab"
-              >
-                <h1 class="display-2 text-center" id="pm1-value">
-                  {{ data["PM1"] }}
-                </h1>
-                <div class="text-center">μg/m<sup>3</sup></div>
-              </div>
-            </div>
+{% extends "template.html" %} {% block title %} <title>PM2.5@CPE</title> {%
+endblock %} {% block contents %}
+<div class="jumbotron d-none d-md-block">
+  <h1 class="display-4">PM2.5@CPE</h1>
+  <p>
+    เซนเซอร์วัดตัวนี้เป็นผลงานของ
+    <a href="https://cpe.ku.ac.th/"
+      >ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</a
+    >
+    และติดตั้งอยู่บริเวณชั้น 1 อาคารภาควิชาฯ
+  </p>
+  <p class="small">
+    ภาควิชาฯ เปิดสอนรายวิชาการสร้างอุปกรณ์ "อินเทอร์เน็ตแห่งสรรพสิ่ง (IoT)"
+    ในลักษณะเดียวกับเซนเซอร์วัดคุณภาพอากาศตัวนี้ที่เชื่อมต่อกับอินเทอร์เน็ต
+    โดยเปิดสอนผ่านโครงการหลักสูตร<b>ศาสตร์แห่งแผ่นดินเพื่อการพัฒนาที่ยั่งยืน</b>
+    <a href="https://cpe.ku.ac.th/kotl/"> ศึกษาเพิ่มเติมได้ที่นี่</a>
+  </p>
+</div>
+<div class="row">
+  <div class="col-md-4 mb-3">
+    <div class="card" id="dust-card">
+      <div class="card-body">
+        <ul class="nav nav-pills nav-fill" id="value-tabs" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="pm25-tab"
+              data-toggle="tab"
+              href="#pm25"
+              role="tab"
+              aria-controls="pm25"
+              aria-selected="true"
+              >PM2.5</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="pm10-tab"
+              data-toggle="tab"
+              href="#pm10"
+              role="tab"
+              aria-controls="pm10"
+              aria-selected="false"
+              >PM10</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="pm1-tab"
+              data-toggle="tab"
+              href="#pm1"
+              role="tab"
+              aria-controls="pm1"
+              aria-selected="false"
+              >PM1</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content" id="values-tab-content">
+          <div
+            class="tab-pane fade show active"
+            id="pm25"
+            role="tabpanel"
+            aria-labelledby="pm25-tab"
+          >
+            <h1 class="display-2 text-center" id="pm25-value">
+              {{ data["PM2.5"] }}
+            </h1>
+            <div class="text-center">μg/m<sup>3</sup></div>
           </div>
-        </div>
-      </div>
-      <div class="col-md-8">
-        <h5>กราฟแสดงปริมาณฝุ่นย้อนหลัง</h5>
-        <div id="pm25-chart-wrapper"><canvas id="pm25-chart"></canvas></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <hr />
-        <div class="footer">
-          เซนเซอร์วัดฝุ่นครั้งล่าสุดเมื่อ
-          <span id="timestamp">{{ data["timestamp"] | datetime }}</span>
+          <div
+            class="tab-pane fade"
+            id="pm10"
+            role="tabpanel"
+            aria-labelledby="pm10-tab"
+          >
+            <h1 class="display-2 text-center" id="pm10-value">
+              {{ data["PM10"] }}
+            </h1>
+            <div class="text-center">μg/m<sup>3</sup></div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pm1"
+            role="tabpanel"
+            aria-labelledby="pm1-tab"
+          >
+            <h1 class="display-2 text-center" id="pm1-value">
+              {{ data["PM1"] }}
+            </h1>
+            <div class="text-center">μg/m<sup>3</sup></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</html>
-
+  <div class="col-md-8">
+    <h5>กราฟแสดงปริมาณฝุ่นย้อนหลัง</h5>
+    <div id="pm25-chart-wrapper"><canvas id="pm25-chart"></canvas></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr />
+    <div class="footer">
+      เซนเซอร์วัดฝุ่นครั้งล่าสุดเมื่อ
+      <span id="timestamp">{{ data["timestamp"] | datetime }}</span>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
 <script src="{{ url_for('static', filename='main.js') }}"></script>
+{% endblock %}
