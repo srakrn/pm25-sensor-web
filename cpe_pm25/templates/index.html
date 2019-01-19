@@ -18,6 +18,11 @@ endblock %} {% block contents %}
 </div>
 <div class="row">
   <div class="col-12 mb-4">
+    {% if alert %}
+      <div class="alert alert-warning">
+        {{ alert }}
+      </div>
+    {% endif %}
     <h3>
       สถานการณ์ปัจจุบัน:
         <div id="aqi-badge" class="badge badge-{{ data['description']['shortcode'] }}-air">

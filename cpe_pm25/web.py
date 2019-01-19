@@ -38,7 +38,7 @@ def index():
         "PM1": latest_data[3],
         "description": get_air_condition(latest_data[2])
     }
-    return render_template("index.html", data=data)
+    return render_template("index.html", data=data, alert=getenv("ALERT"))
 
 
 @web.route("/about")
