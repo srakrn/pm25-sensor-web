@@ -50,6 +50,31 @@ class DustDatabase:
         return True
 
 
+def get_air_condition(pm25):
+    lower_bound = [0, 26, 38, 51, 91]
+    brief_description = [
+        "ดี",
+        "ปกติ",
+        "ปานกลาง",
+        "เริ่มมีผลกระทบต่อสุขภาพ",
+        "มีผลกระทบต่อสุขภาพ"
+    ]
+    description = [
+        "คุณภาพอากาศดีมาก เหมาะสำหรับกิจกรรมกลางแจ้งและการท่องเที่ยว",
+        "คุณภาพอากาศดี สามารถทำกิจกรรมกลางแจ้งและการท่องเที่ยวได้ตามปกติ",
+        "ผู้ที่ต้องดูแลสุขภาพ หากมีอาการเบื้องต้น ควรลดระยะเวลาการทำกิจกรรมกลางแจ้ง",
+        "ควรเฝ้าระวังสุขภาพ หากมีอาการเบื้องต้นควรงดกิจกรรมกลางแจ้ง ใช้อุปกรณ์ป้องกันหากจำเป็น",
+        "ทุกคนควรหลีกเลี่ยงกิจกรรมกลางแจ้ง หลีกเลี่ยงพื้นที่ที่มีมลพิษทางอากาศสูง และใช้อุปกรณ์ป้องกันตนเองหากมีความจำเป็น"
+    ]
+    condition = [pm25 > i for i in lower_bound]
+    i = condition.count(True)
+    return {
+        "level": i,
+        "brief_description": brief_description[i-1],
+        "description": description[i-1]
+    }
+
+
 @api.route("/")
 def api_manual():
     return render_template("api.html")
@@ -59,6 +84,7 @@ def api_manual():
 def return_latest_dust():
     db = DustDatabase()
     data = db.query(n=1)[0]
+    data["description"] = get_air_condition(data["PM2.5"])
     return jsonify(data)
 
 
