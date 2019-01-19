@@ -4,6 +4,7 @@ from jinja2 import TemplateNotFound
 from os import getenv
 from dotenv import load_dotenv
 from datetime import timedelta
+from cpe_pm25.air_condition import get_air_condition
 
 load_dotenv()
 
@@ -48,31 +49,6 @@ class DustDatabase:
         self.cursor.execute(sql, (pm10, pm25, pm1))
         self.conn.commit()
         return True
-
-
-def get_air_condition(pm25):
-    lower_bound = [0, 26, 38, 51, 91]
-    brief_description = [
-        "ดี",
-        "ปกติ",
-        "ปานกลาง",
-        "เริ่มมีผลกระทบต่อสุขภาพ",
-        "มีผลกระทบต่อสุขภาพ"
-    ]
-    description = [
-        "คุณภาพอากาศดีมาก เหมาะสำหรับกิจกรรมกลางแจ้งและการท่องเที่ยว",
-        "คุณภาพอากาศดี สามารถทำกิจกรรมกลางแจ้งและการท่องเที่ยวได้ตามปกติ",
-        "ผู้ที่ต้องดูแลสุขภาพ หากมีอาการเบื้องต้น ควรลดระยะเวลาการทำกิจกรรมกลางแจ้ง",
-        "ควรเฝ้าระวังสุขภาพ หากมีอาการเบื้องต้นควรงดกิจกรรมกลางแจ้ง ใช้อุปกรณ์ป้องกันหากจำเป็น",
-        "ทุกคนควรหลีกเลี่ยงกิจกรรมกลางแจ้ง หลีกเลี่ยงพื้นที่ที่มีมลพิษทางอากาศสูง และใช้อุปกรณ์ป้องกันตนเองหากมีความจำเป็น"
-    ]
-    condition = [pm25 > i for i in lower_bound]
-    i = condition.count(True)
-    return {
-        "level": i,
-        "brief_description": brief_description[i-1],
-        "description": description[i-1]
-    }
 
 
 @api.route("/")
