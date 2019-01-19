@@ -51,6 +51,11 @@ class DustDatabase:
 
 
 @api.route("/latest")
+def api_manual():
+    return render_template("api.html")
+
+
+@api.route("/latest")
 def return_latest_dust():
     db = DustDatabase()
     data = db.query(n=1)[0]
