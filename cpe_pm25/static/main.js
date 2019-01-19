@@ -1,6 +1,13 @@
 function updateValues() {
   $.getJSON("api/latest", function(data) {
     console.log(data);
+    $("#aqi-badge")
+      .removeClass()
+      .addClass(
+        "badge badger badge-" + data["description"]["shortcode"] + "-air"
+      );
+    $("#aqi-badge").html(data["description"]["brief_description"]);
+    $("#aqi-description").html(data["description"]["description"]);
     $("#pm25-value").html(data["PM2.5"]);
     $("#pm10-value").html(data["PM10"]);
     $("#pm1-value").html(data["PM1"]);
