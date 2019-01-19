@@ -42,7 +42,31 @@
     class="navbar fixed-top navbar-expand-lg navbar-light"
     style="background-color: rgba(255, 160, 0, 1.0);"
   >
-    <a class="navbar-brand" href="#">PM2.5@CPE</a>
+    <a class="navbar-brand" href="{{ url_for('web.index') }}">PM2.5@CPE</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('web.index') }}">หน้าแรก</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('web.sensor_info') }}"
+            >เกี่ยวกับเซนเซอร์</a
+          >
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('api.api_manual') }}"">API</a></li>
+      </ul>
+    </div>
   </nav>
   <div class="container">{% block contents %} {% endblock %}</div>
 </html>
