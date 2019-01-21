@@ -1,8 +1,10 @@
 import mysql.connector
 from flask import Blueprint, render_template, abort, jsonify, request
 from jinja2 import TemplateNotFound
+import os.path
 from os import getenv
 from dotenv import load_dotenv
+import markdown
 from cpe_pm25.air_condition import get_air_condition
 load_dotenv()
 
@@ -43,4 +45,9 @@ def index():
 
 @web.route("/about")
 def sensor_info():
-    return render_template("about.html")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    about_path = os.path.join(BASE_DIR, "static/about.md")
+    with open(about_path) as f:
+        contents_md = "".join(f.readlines())
+        contents = markdown.markdown(contents_md)
+    return render_template("about.html", contents=contents)
