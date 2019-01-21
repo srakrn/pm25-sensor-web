@@ -47,7 +47,7 @@ def index():
 def sensor_info():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     about_path = os.path.join(BASE_DIR, "static/about.md")
-    with open(about_path) as f:
+    with open(about_path, encoding='utf-8') as f:
         contents_md = "".join(f.readlines())
         contents = markdown.markdown(contents_md)
     return render_template("about.html", contents=contents)
