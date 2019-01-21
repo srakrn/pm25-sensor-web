@@ -39,6 +39,18 @@ endblock %} {% block contents %}
         <ul class="nav nav-pills nav-fill" id="value-tabs" role="tablist">
           <li class="nav-item">
             <a
+              class="nav-link"
+              id="pm1-tab"
+              data-toggle="tab"
+              href="#pm1"
+              role="tab"
+              aria-controls="pm1"
+              aria-selected="false"
+              >PM1</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
               class="nav-link active"
               id="pm25-tab"
               data-toggle="tab"
@@ -61,20 +73,19 @@ endblock %} {% block contents %}
               >PM10</a
             >
           </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              id="pm1-tab"
-              data-toggle="tab"
-              href="#pm1"
-              role="tab"
-              aria-controls="pm1"
-              aria-selected="false"
-              >PM1</a
-            >
-          </li>
         </ul>
         <div class="tab-content" id="values-tab-content">
+          <div
+            class="tab-pane fade"
+            id="pm1"
+            role="tabpanel"
+            aria-labelledby="pm1-tab"
+          >
+            <h1 class="display-2 text-center" id="pm1-value">
+              {{ data["PM1"] }}
+            </h1>
+            <div class="text-center">μg/m<sup>3</sup></div>
+          </div>
           <div
             class="tab-pane fade show active"
             id="pm25"
@@ -94,17 +105,6 @@ endblock %} {% block contents %}
           >
             <h1 class="display-2 text-center" id="pm10-value">
               {{ data["PM10"] }}
-            </h1>
-            <div class="text-center">μg/m<sup>3</sup></div>
-          </div>
-          <div
-            class="tab-pane fade"
-            id="pm1"
-            role="tabpanel"
-            aria-labelledby="pm1-tab"
-          >
-            <h1 class="display-2 text-center" id="pm1-value">
-              {{ data["PM1"] }}
             </h1>
             <div class="text-center">μg/m<sup>3</sup></div>
           </div>
