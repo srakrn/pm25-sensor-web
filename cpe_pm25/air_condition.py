@@ -1,5 +1,5 @@
 def get_air_condition(pm25):
-    lower_bound = [0, 26, 38, 51, 91]
+    lower_bound = [0, 25, 37, 50, 90]
     shortcode = [
         "good",
         "normal",
