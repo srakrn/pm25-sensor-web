@@ -1,5 +1,5 @@
 import mysql.connector
-from flask import Blueprint, render_template, abort, jsonify, request
+from flask import Blueprint, render_template, abort, jsonify, request, url_for
 from jinja2 import TemplateNotFound
 import os.path
 from os import getenv
@@ -51,3 +51,29 @@ def sensor_info():
         contents_md = "".join(f.readlines())
         contents = markdown.markdown(contents_md)
     return render_template("about.html", contents=contents)
+
+
+@web.route("/manifest.json")
+def json_webpack():
+    json_data = {
+        "short_name": "PM2.5@KU",
+        "name": "PM2.5@KU",
+        "icons": [
+            {
+                "src": url_for('static', filename='logo-192px.png'),
+                "type": "image/png",
+                "sizes": "192x192"
+            },
+            {
+                "src": url_for('static', filename='logo-512px.png'),
+                "type": "image/png",
+                "sizes": "512x512"
+            }
+        ],
+        "start_url": '/',
+        "background_color": "#FFFFFF",
+        "display": "standalone",
+        "scope": '/',
+        "theme_color": "#FFA000"
+    }
+    return jsonify(json_data)
