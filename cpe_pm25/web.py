@@ -70,10 +70,10 @@ def json_webpack():
                 "sizes": "512x512"
             }
         ],
-        "start_url": '/',
+        "start_url": url_for('web.index'),
         "background_color": "#FFFFFF",
         "display": "standalone",
-        "scope": '/',
+        "scope": url_for('web.index'),
         "theme_color": "#FFA000"
     }
     return jsonify(json_data)
