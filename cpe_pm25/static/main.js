@@ -29,11 +29,10 @@ function updateChart() {
     console.log(d);
     var option = {
       title: {
-        text: "ECharts entry example"
+        display: false
       },
-      tooltip: {},
-      legend: {
-        data: ["Sales"]
+      grid: {
+        top: 5
       },
       xAxis: {
         type: "time",
@@ -53,7 +52,31 @@ function updateChart() {
         {
           name: "PM2.5",
           type: "line",
-          data: d
+          data: d,
+          smooth: true,
+          lineStyle: {
+            color: "#FF6F00",
+            width: 5
+          },
+          itemStyle: {
+            color: "#FF6F00",
+            borderColor: "#FF6F00"
+          },
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0,
+                color: "rgba(255, 160, 0, 0.8)"
+              },
+              {
+                offset: 1,
+                color: "rgba(255, 160, 0, 0)"
+              }
+            ])
+          },
+          animation: true,
+          animationDuration: 700,
+          animationEasing: "quadraticOut"
         }
       ]
     };
