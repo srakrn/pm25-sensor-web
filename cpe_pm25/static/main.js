@@ -16,93 +16,48 @@ function updateValues() {
   });
 }
 
-var ctx = document.getElementById("pm25-chart").getContext("2d");
-var gradientStroke = ctx.createLinearGradient(0, 0, 0, 200);
-gradientStroke.addColorStop(0, "rgba(255, 160, 0, 0.8)");
-gradientStroke.addColorStop(1, "rgba(255, 160, 0, 0)");
+var pmchart = echarts.init(document.getElementById("pm25-chart-wrapper"));
 
 function updateChart() {
   $.getJSON("api/history?amount=100", function(data) {
-    var dataPoints = [];
-    var labels = [];
+    var d = [];
     for (var i = 0; i < data.length; i++) {
-      dataPoints.unshift(data[i]["PM2.5"]);
+      pm25 = data[i]["PM2.5"];
       timestamp = moment(data[i]["timestamp"]);
-      labels.unshift(timestamp.format("DD/MM/YYYY HH:mm"));
+      d.unshift([timestamp.toDate(), pm25]);
     }
-    console.log(dataPoints);
-    console.log(labels);
-    var myChart = new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            label: "PM2.5",
-            data: dataPoints,
-            backgroundColor: gradientStroke,
-            borderColor: "#FF6F00",
-            borderWidth: 3,
-            cubicInterpolationMode: "default",
-            pointRadius: 2,
-            pointBackgroundColor: "#FF6F00"
-          }
-        ]
+    console.log(d);
+    var option = {
+      title: {
+        text: "ECharts entry example"
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true
-              }
-            }
-          ]
-        },
-        annotation: {
-          annotations: [
-            {
-              drawTime: "afterDatasetsDraw",
-              id: "startingHealthAffection",
-              type: "line",
-              mode: "horizontal",
-              scaleID: "y-axis-0",
-              value: 50,
-              borderColor: "black",
-              borderWidth: 2,
-              borderDash: [2, 2],
-              label: {
-                enabled: true,
-                backgroundColor: "#FF6F00",
-                content: "เริ่มมีผลกระทบต่อสุขภาพ",
-                position: "left",
-                xAdjust: 10
-              }
-            },
-            {
-              drawTime: "afterDatasetsDraw",
-              id: "healthAffection",
-              type: "line",
-              mode: "horizontal",
-              scaleID: "y-axis-0",
-              value: 90,
-              borderColor: "black",
-              borderWidth: 2,
-              borderDash: [2, 2],
-              label: {
-                enabled: true,
-                backgroundColor: "#D84315",
-                content: "มีผลกระทบต่อสุขภาพ",
-                position: "left",
-                xAdjust: 10
-              }
-            }
-          ]
+      tooltip: {},
+      legend: {
+        data: ["Sales"]
+      },
+      xAxis: {
+        type: "time",
+        boundaryGap: false,
+        axisLabel: {
+          formatter: function(value) {
+            return moment(value).format("DD/MM/YYYY HH:mm");
+          }
         }
-      }
-    });
+      },
+      yAxis: [
+        {
+          type: "value"
+        }
+      ],
+      series: [
+        {
+          name: "PM2.5",
+          type: "line",
+          data: d
+        }
+      ]
+    };
+    pmchart.setOption(option);
   });
 }
 
