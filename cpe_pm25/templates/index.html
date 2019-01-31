@@ -30,12 +30,6 @@ endblock %} {% block contents %}
         </div>
       </span>
     </h3>
-    <p>
-      <em>
-        เซนเซอร์วัดฝุ่นครั้งล่าสุดเมื่อ
-        <span id="timestamp">{{ data["timestamp"] | datetime }}</span>
-      </em>
-    </p>
     <p id="aqi-description">{{ data["description"]["description"] }}</p>
   </div>
   <div class="col-md-4 mb-3">
@@ -114,6 +108,12 @@ endblock %} {% block contents %}
             </h1>
             <div class="text-center">μg/m<sup>3</sup></div>
           </div>
+        </div>
+        <div class="text-center mt-2">
+          <em>
+            ตรวจวัดล่าสุด: 
+            <span id="timestamp">{{ data["timestamp"] | datetime }}</span>
+          </em>
         </div>
       </div>
     </div>
