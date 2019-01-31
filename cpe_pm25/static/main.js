@@ -32,7 +32,8 @@ function updateChart() {
         display: false
       },
       grid: {
-        top: 5
+        top: 5,
+        right: 110
       },
       xAxis: {
         type: "time",
@@ -73,6 +74,31 @@ function updateChart() {
                 color: "rgba(255, 160, 0, 0)"
               }
             ])
+          },
+          markLine: {
+            silent: true,
+            label: {
+              show: true,
+              formatter: "{b}"
+            },
+            symbol: ["none", "none"],
+            animation: false,
+            data: [
+              {
+                yAxis: 50,
+                name: "เริ่มมีผลต่อสุขภาพ",
+                lineStyle: {
+                  color: "#FF6F00"
+                }
+              },
+              {
+                yAxis: 100,
+                name: "มีผลต่อสุขภาพ",
+                lineStyle: {
+                  color: "#C62828"
+                }
+              }
+            ]
           },
           animation: true,
           animationDuration: 700,
