@@ -30,6 +30,12 @@ endblock %} {% block contents %}
         </div>
       </span>
     </h3>
+    <p>
+      <em>
+        เซนเซอร์วัดฝุ่นครั้งล่าสุดเมื่อ
+        <span id="timestamp">{{ data["timestamp"] | datetime }}</span>
+      </em>
+    </p>
     <p id="aqi-description">{{ data["description"]["description"] }}</p>
   </div>
   <div class="col-md-4 mb-3">
@@ -115,15 +121,6 @@ endblock %} {% block contents %}
   <div class="col-md-8">
     <h5>กราฟแสดงปริมาณฝุ่นย้อนหลัง</h5>
     <div id="pm25-chart-wrapper"><canvas id="pm25-chart"></canvas></div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <hr />
-    <div class="footer mb-3">
-      เซนเซอร์วัดฝุ่นครั้งล่าสุดเมื่อ
-      <span id="timestamp">{{ data["timestamp"] | datetime }}</span>
-    </div>
   </div>
 </div>
 {% endblock %} {% block scripts %}
